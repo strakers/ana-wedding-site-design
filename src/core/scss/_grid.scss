@@ -1,0 +1,60 @@
+@use 'sass:math';
+@use 'breakpoints';
+
+/* =====================================================================================================================
+  ## GRID SYSTEM STYLES ##
+===================================================================================================================== */
+
+.container {
+  margin: 0 auto;
+  padding: 1em 1em;
+  width: calc( 100% - 2em );
+  transition: all .2s;
+
+  @include breakpoints.mq(xl) {
+    padding: 1em 10em;
+    width: calc(100% - 20em);
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    & > *, &.three > * {
+      flex: 1 1 calc(math.div(100%, 3) - 2em);
+      min-width: 15ch;
+
+      &.wide {
+        flex: 1 1 calc(( math.div(100%, 3) * 2) - 2em);
+      }
+
+      &.full {
+        flex: 1 1 calc(100% - 2em);
+      }
+    }
+
+    &.two > * {
+      flex: 1 1 calc(math.div(100%, 2) - 2em);
+      min-width: 15ch;
+    }
+
+    &.four > * {
+      flex: 1 1 calc(math.div(100%, 4) - 2em);
+      min-width: 15ch;
+    }
+
+    &.five > * {
+      flex: 1 1 calc(math.div(100%, 5) - 2em);
+      min-width: 15ch;
+    }
+
+    &.justified {
+      justify-content: center;
+    }
+
+    &.maintain-size > * {
+      flex-grow: 0;
+    }
+  }
+}

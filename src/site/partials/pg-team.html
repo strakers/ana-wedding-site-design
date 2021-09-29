@@ -1,0 +1,105 @@
+<script locals>
+    module.exports = {
+        arr: [5,3,4]
+    }
+</script>
+
+<span id="team" class="nav-item"></span>
+
+<include src="partials/nav.html">{ "page": "team" }</include>
+
+<div class="container pg-team">
+    <section class="hero">
+        <h1>
+            <span class="font-primary">The Team</span>
+            <span class="font-secondary font-accent">&</span>
+            <span class="font-primary">Media</span>
+        </h1>
+        <div class="box">
+            <img src="https://picsum.photos/id/106/900/400">
+        </div>
+        <h2>
+            <span class="font-secondary"><a href="#crew">Our Crew</a> | <a href="#gallery">Gallery</a> | <a href="#media">Media</a> | <a href="#vendors">Vendors</a></span>
+        </h2>
+    </section>
+
+    <div class="divider"></div><!-- ================================================================================ -->
+
+    <section class="main">
+        <h3 id="crew">
+            <span class="font-secondary">Our Crew / Support System</span>
+        </h3>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur et ipsam porro sapiente tempora voluptatem! Aliquam animi autem corporis cupiditate debitis delectus dolor dolorem error eum excepturi facilis fuga id impedit inventore ipsa laborum maxime molestiae nemo nisi nostrum odio porro quam quos reprehenderit repudiandae sequi similique sint, tenetur voluptas voluptates. Adipisci, aspernatur aut consectetur dicta dolor dolorem dolores eius ex numquam officia, omnis, quaerat qui rem soluta ut. Officia, possimus!</p>
+        </div>
+    </section>
+
+    <div class="divider"></div><!-- ================================================================================ -->
+
+    <div>
+        <h3 id="gallery" class="centered">
+            <span class="font-secondary">Gallery</span>
+        </h3>
+        <section class="grid gallery justified">
+            <div class="row">
+                <div class="box">
+                    <img src="https://picsum.photos/id/106/200/300">
+                </div>
+                <div class="box wide">
+                    <img src="https://picsum.photos/id/107/400/292">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/104/800/400">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/103/400/200">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/102/400/200">
+                </div>
+                <div class="box full">
+                    <img src="https://picsum.photos/id/101/800/400">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/1000/400/200">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/1001/400/200">
+                </div>
+                <div class="box">
+                    <img src="https://picsum.photos/id/1002/400/200">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="divider"></div><!-- ================================================================================ -->
+
+    <section class="main centered">
+        <h3 id="media">
+            <span class="font-secondary">Online & Social Media</span>
+        </h3>
+
+        <each loop="item in arr">
+            <div class="content">
+                <p lorem="{{ item}}"></p>
+            </div>
+        </each>
+
+    </section>
+
+    <div class="divider"></div><!-- ================================================================================ -->
+
+    <h3 id="vendors" class="centered">
+        <span class="font-secondary">Vendors</span>
+    </h3>
+    <section class="grid">
+        <div class="row maintain-size justified">
+            <include src="partials/block-business-card.html">{ "title": "Lorem ipsum dolor sit amet, consectetur adipisicing." }</include>
+            <include src="partials/block-business-card.html">{ "email": "special.lorem\u00a0@ispum.lorem.factum.com" }</include>
+            <include src="partials/block-business-card.html">{ "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit." }</include>
+            <include src="partials/block-business-card.html">{ "title": "Lorem ipsum dolor." }</include>
+            <include src="partials/block-business-card.html">{ "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae." }</include>
+        </div>
+    </section>
+</div>

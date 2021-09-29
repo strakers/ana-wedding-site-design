@@ -1,0 +1,84 @@
+@use 'sass:list';
+@use 'sass:map';
+
+$font_formats: (
+  woff: 'woff',
+  woff2: 'woff2',
+  ttf: 'truetype',
+  'eot?#iefix': 'embedded-opentype',
+);
+
+$fonts: (
+  lora: (
+    path: "../../core/fonts/lora/Lora",
+    name: 'Lora',
+    types: ('Regular', 'Italic'),
+    formats: ('eot','woff','woff2','ttf')
+  ),
+  rox: (
+    path: "../../core/fonts/roxborough/RoxboroughCF",
+    name: 'Roxborough CF',
+    types: ('Regular','RegularItalic','Light','LightItalic','Bold','BoldItalic','Thin','ThinItalic'),
+    formats: ('eot','woff','woff2')
+  )
+);
+
+@function fnt($slug) {
+  $fgroup: map.get($fonts, $slug);
+  @if not $fgroup {
+    @return 'Arial';
+  }
+  @return map.get($fgroup, 'name');
+}
+
+/* =====================================================================================================================
+  ## FONTS ##
+===================================================================================================================== */
+
+// generate @font-face declarations globally
+@each $fkey, $fmeta in $fonts {
+
+  @each $ftype in map.get($fmeta, 'types') {
+
+    // define variables
+    $exts: map.get($fmeta, 'formats');
+    $path: map.get($fmeta, 'path');
+    $flist: ();
+
+    // generate @font-face for each font type
+    @font-face {
+      font-family: map.get($fmeta, 'name');
+
+      // output font option for IE if exists
+      @if index($exts, 'eot') {
+        src: url('#{$path}-#{$ftype}.eot');
+      }
+
+      // output list of standard font options for remaining types
+      @each $format in $exts {
+        @if $format == 'eot' {
+          $format: 'eot?#iefix';
+        }
+        $flist: append($flist, url('#{$path}-#{$ftype}.#{$format}') format(map.get($font_formats, $format)), comma);
+      }
+      src: $flist;
+
+      // get font weight
+      @if str-index(to_lower_case($ftype), 'bold') or str-index(to_lower_case($ftype), 'strong') {
+        font-weight: bold;
+      } @else {
+        font-weight: normal;
+      }
+
+      // get font style
+      @if str-index(to_lower_case($ftype), 'italic') {
+        font-style: italic;
+      } @else {
+        font-style: normal;
+      }
+
+      // font display method
+      font-display: swap;
+    }
+  }
+}

@@ -1,0 +1,402 @@
+@use '../../core/scss/root' as __;
+
+/* =====================================================================================================================
+  ## SITE STYLES ##
+===================================================================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff;
+  background-image: url('../media/bg-lf.png'), url('../media/bg-rg.png');
+  background-position: -300px 0, calc(100% + 200px) 0;
+  background-size: 400px, 400px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.cell {
+  display: block;
+  width: 100%;
+}
+
+.nav-item {
+  height: .25em;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: __.clr(gold);
+
+  &.active {
+    color: __.clr(pink);
+  }
+
+  &:hover, &:active, &:focus {
+    color: __.clr(blue);
+  }
+}
+
+/* =====================================================================================================================
+  ## NAVIGATION STYLES ##
+===================================================================================================================== */
+
+nav {
+  font-weight: bold;
+  display: table;
+  margin: 0 auto;
+  font-family: __.fnt('lora'), Arial, serif;
+  font-size: 14px;
+
+  & > ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  & li {
+    display: table-cell;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      inset: 0 0 0 100%;
+      height: 115%;
+      width: 1px;
+      margin-left: -1px;
+      background-color: __.clr(green, 50);
+    }
+
+    &:last-child:after {
+      display: none;
+      margin-right: 0;
+    }
+  }
+
+  & a {
+    padding: .25em .75em;
+    text-align: center;
+    color: __.clr(green);
+
+    &.active {
+      color: __.clr(pink);
+    }
+
+    &:hover, &:active, &:focus {
+      color: __.clr(blue);
+    }
+  }
+}
+
+/* =====================================================================================================================
+  ## SECONDARY FONT STYLES ##
+===================================================================================================================== */
+
+.font-primary {
+  color: __.clr(pink);
+}
+
+.font-secondary {
+  color: __.clr(green);
+}
+
+.font-accent {
+  font-size: 55%;
+}
+
+/* =====================================================================================================================
+  ## LAYOUT STYLES ##
+===================================================================================================================== */
+
+h1, h2 {
+  font-family: __.fnt('rox'), Arial, serif;
+  font-weight: bold;
+  text-transform: lowercase;
+  text-align: center;
+  margin: 16px;
+  text-shadow: 0 0 4px #fff, 0 0 8px #fff;
+  line-height: initial;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2, h3 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-family: __.fnt('rox'), Arial, serif;
+}
+
+.centered {
+  text-align: center;
+}
+
+.divider {
+  background-image: url('../media/divider.png');
+  background-position: 50% 50%;
+  background-size: 400px, 400px;
+  background-repeat: no-repeat;
+  min-height: 15em;
+  width: 100%;
+  margin: 3em 0;
+
+  &.page {
+    border-bottom: 1px dashed __.clr(pink);
+    padding-bottom: 5em;
+    margin-top: 1em;
+  }
+}
+
+.box {
+  background: linear-gradient(to bottom, __.clr(pink), __.clr(green));
+  position: relative;
+  isolation: isolate;
+  padding: .25em .25em 0;
+  max-height: fit-content;
+  height: -moz-max-content;
+  height: max-content;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: #fff;
+    z-index: -1;
+    inset: 1px;
+  }
+
+  img, svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: __.fnt('lora'), Arial, serif;
+  font-size: 1em;
+  letter-spacing: normal;
+  word-spacing: 4px;
+  line-height: 1.25em;
+
+  &.hero {
+    margin-top: 10em;
+  }
+
+  &.main {
+
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    p {
+      margin: 0 auto 16px;
+      max-width: 22em;
+    }
+
+    & .left p {
+      text-align: left;
+    }
+  }
+}
+
+/* =====================================================================================================================
+  ## FORM STYLES ##
+===================================================================================================================== */
+
+label, input, button, textarea {
+  font-family: __.fnt('lora'), Arial, serif;
+}
+
+fieldset {
+  all: initial;
+
+  label.radio {
+    padding: .5em 0;
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-gap: 0.5em;
+    cursor: pointer;
+
+    .radio-input {
+      display: flex;
+      line-height: 1;
+
+      .radio-control {
+        display: grid;
+        place-items: center;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        border: .1em solid currentColor;
+        transform: translateY(0.15em);
+        transition: .25s box-shadow;
+      }
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &[value='1'] + .radio-control {
+          color: __.clr(green);
+        }
+
+        &[value='0'] + .radio-control {
+          color: __.clr(pink);
+        }
+
+        & + .radio-control::before {
+          content: '';
+          width: .5em;
+          height: .5em;
+          box-shadow: inset .5em .5em currentColor;
+          border-radius: 50%;
+          transition: 180ms transform ease-in-out;
+          transform: scale(0);
+        }
+
+        &:checked + .radio-control::before {
+          transform: scale(1);
+        }
+
+        &:focus + .radio-control {
+          box-shadow: 0 0 0 .05em #fff, 0 0 .15em .1em currentColor;
+        }
+      }
+    }
+  }
+}
+
+input[type=radio], input[type=checkbox] {
+}
+
+hr {
+  background-color: __.clr(green, 25);
+  margin: 3em auto;
+  border: 0 none;
+  height: 1px;
+}
+
+button {
+  border: 0 none;
+  border-radius: 50%;
+  padding: 1em;
+  cursor: pointer;
+  text-transform: lowercase;
+  font-size: 1em;
+  transition: all .5s;
+  background-image: linear-gradient(to right, transparent, #3333);
+  position: relative;
+  margin: 3px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border: 1px solid #000;
+    border-radius: 50%;
+  }
+
+  // primary button -----------------------------------------------------------------------------------------------/
+  &[type=submit], &.primary {
+    background-color: __.clr(gold);
+    color: #fff;
+
+    &::before {
+      border-color: __.clr(gold);
+    }
+  }
+
+  // secondary button -----------------------------------------------------------------------------------------------/
+  &[type=reset], &.secondary {
+    background-color: __.clr(green);
+    color: #fff;
+
+    &::before {
+      border-color: __.clr(green);
+    }
+  }
+
+  &:hover, &:focus {
+    background-color: __.clr(blue);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 .25em #fff, 0 0 .25em .25em __.clr(blue);
+    outline: 0 none;
+  }
+
+  &:hover::before, &:focus::before {
+    border-color: __.clr(blue);
+  }
+}
+
+.grid.gallery {
+  .box {
+    margin-bottom: 1em;
+  }
+}
+
+/* =====================================================================================================================
+  ## VENDOR STYLES ##
+===================================================================================================================== */
+
+.business-card {
+  @extend .box;
+
+  padding: 1em;
+  min-height: 7em;
+  border-radius: 4px;
+  font-size: 14px;
+  word-spacing: initial;
+
+  &::before {
+    border-radius: 4px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius:  0 4px 4px 0;
+    inset: 0 0 0 80%;
+    background-color: __.clr(pink, 25);
+    z-index: -1;
+  }
+
+  span, div {
+    max-width: 80%;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    color: __.clr(pink);
+    margin-bottom: 1em;
+    line-height: 14px;
+  }
+
+  .body {
+    margin-left: .5em;
+  }
+
+  .lni {
+    color: __.clr(pink);
+    float: left;
+    margin-right: .5em;
+    transform: translateY(3px);
+  }
+}

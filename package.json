@@ -1,0 +1,25 @@
+{
+  "name": "ana-wedding-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "admin-dev": "parcel src/admin/index.html --out-dir=dist/admin --port=1235",
+    "admin-build": "parcel build src/admin/index.html --out-dir=dist/admin",
+    "dev": "parcel src/site/index.html --out-dir=dist/site --port=1234",
+    "build": "parcel build src/site/index.html --out-dir=dist/site"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "posthtml": "^0.16.5",
+    "posthtml-expressions": "^1.9.0",
+    "posthtml-include": "^1.7.1",
+    "posthtml-lorem": "^1.0.0",
+    "posthtml-postcss": "^0.5.0",
+    "sass": "^1.42.1"
+  },
+  "dependencies": {}
+}

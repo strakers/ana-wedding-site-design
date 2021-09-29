@@ -1,0 +1,14 @@
+<script locals>
+    module.exports = {
+    }
+</script>
+
+<div class="business-card">
+    <div class="title">{{ typeof title !== 'undefined' ? title : "Lorem ipsum dolor sit amet." }}</div>
+    <div class="body">
+        <div><i class="lni lni-phone"></i> {{ typeof phone !== 'undefined' ? phone : "514-125-1848" }}</div>
+        <div><i class="lni lni-envelope"></i> {{ typeof email !== 'undefined' ? email : "lorem@ipsum.com" }}</div>
+        <div><i class="lni lni-facebook-oval"></i> {{ typeof fb !== 'undefined' ? fb : "@loremipsum" }}</div>
+        <div><i class="lni lni-instagram-original"></i> {{ typeof ig !== 'undefined' ? ig : "@loremipsum" }}</div>
+    </div>
+</div>

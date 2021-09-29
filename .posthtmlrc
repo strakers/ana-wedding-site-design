@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "posthtml-include": { "root":  "./src/site" },
+    "posthtml-expressions": { "removeScriptLocals": true },
+    "posthtml-lorem": {}
+  }
+}

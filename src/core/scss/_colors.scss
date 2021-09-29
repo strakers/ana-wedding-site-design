@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$pink: hsl(348,79%,43%);
+$green: hsl(98,17%,37%);
+$gold: hsl(45,100%,39%);
+$blue: hsl(199,18%,65%);
+
+$colors: (
+  pink: $pink,
+  green: $green,
+  gold: $gold,
+  blue: $blue
+);
+
+@function clr($key, $lightness: 100) {
+  $color: map.get($colors, $key);
+  $adjustment: math.div($lightness,100);
+  @return rgba($color, $adjustment);
+}
