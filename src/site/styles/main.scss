@@ -10,8 +10,8 @@ html {
 
 body {
   background-color: #fff;
-  background-image: url('../media/bg-lf.png'), url('../media/bg-rg.png');
-  background-position: -300px 0, calc(100% + 200px) 0;
+  background-image: url('../media/bg-top.jpg'), url('../media/bg-top.jpg');
+  background-position: -207px 0, calc(100% + 208px) 0;
   background-size: 400px, 400px;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -146,7 +146,7 @@ h3 {
 .divider {
   background-image: url('../media/divider.png');
   background-position: 50% 50%;
-  background-size: 400px, 400px;
+  background-size: 300px, 300px;
   background-repeat: no-repeat;
   min-height: 15em;
   width: 100%;
@@ -156,6 +156,21 @@ h3 {
     border-bottom: 1px dashed __.clr(pink);
     padding-bottom: 5em;
     margin-top: 1em;
+  }
+
+  &.no-bg {
+    background-image: none;
+  }
+}
+
+.spacer {
+  padding: 1em 0;
+  margin: 0 auto;
+
+  @each $index in [2,3,4,5] {
+    &#{&}-#{$index} {
+      padding: #{$index}em 0;
+    }
   }
 }
 
@@ -284,6 +299,12 @@ fieldset {
 input[type=radio], input[type=checkbox] {
 }
 
+input[type=text] {
+  border: 0 none;
+  border-bottom: 1px solid __.clr(gold);
+  padding: 1em;
+}
+
 hr {
   background-color: __.clr(green, 25);
   margin: 3em auto;
@@ -342,6 +363,16 @@ button {
 
   &:hover::before, &:focus::before {
     border-color: __.clr(blue);
+  }
+
+  &.plain {
+    border-radius: revert;
+    background: none;
+    color: __.clr(pink);
+
+    &::before {
+      display: none;
+    }
   }
 }
 
