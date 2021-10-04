@@ -76,3 +76,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+
+# Server Scripts
+post.sh
+build.sh
