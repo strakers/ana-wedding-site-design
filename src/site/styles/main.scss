@@ -299,10 +299,18 @@ fieldset {
 input[type=radio], input[type=checkbox] {
 }
 
-input[type=text] {
+input[type=text], input[type=tel], input[type=email], input[type=url], input[type=date], input[type=password] {
   border: 0 none;
+  border-radius: 50% 50% 0 0;
   border-bottom: 1px solid __.clr(gold);
-  padding: 1em;
+  padding: 2em;
+  margin-bottom: 1em;
+  transition: all .5s;
+
+  &:focus {
+    box-shadow: 0 0 0 .25em #fff, 0 3px .25em .05em __.clr(gold);
+    outline: 0 none;
+  }
 }
 
 hr {
@@ -313,6 +321,7 @@ hr {
 }
 
 button {
+  --btn-color: #{__.clr(blue)};
   border: 0 none;
   border-radius: 50%;
   padding: 1em;
@@ -320,61 +329,47 @@ button {
   text-transform: lowercase;
   font-size: 1em;
   transition: all .5s;
-  background-image: linear-gradient(to right, transparent, #3333);
   position: relative;
   margin: 3px;
+  aspect-ratio: 1 / 1;
+  color: var(--btn-color);
+  background-color: transparent;
+  outline: 0 none;
 
-  &::before {
+  &:not(.plain)::before {
     content: '';
     position: absolute;
     inset: -3px;
-    border: 1px solid #000;
+    border: 1px solid var(--btn-color);
     border-radius: 50%;
-  }
-
-  // primary button -----------------------------------------------------------------------------------------------/
-  &[type=submit], &.primary {
-    background-color: __.clr(gold);
-    color: #fff;
-
-    &::before {
-      border-color: __.clr(gold);
-    }
-  }
-
-  // secondary button -----------------------------------------------------------------------------------------------/
-  &[type=reset], &.secondary {
-    background-color: __.clr(green);
-    color: #fff;
-
-    &::before {
-      border-color: __.clr(green);
-    }
+    transition: all .5s;
   }
 
   &:hover, &:focus {
-    background-color: __.clr(blue);
+    background-color: var(--btn-color);
+    background-image: linear-gradient(to right, transparent, #3333);
+    color: #fff;
   }
 
   &:focus {
-    box-shadow: 0 0 0 .25em #fff, 0 0 .25em .25em __.clr(blue);
+    box-shadow: 0 0 0 .25em #fff, 0 0 .25em .25em var(--btn-color);
     outline: 0 none;
   }
 
-  &:hover::before, &:focus::before {
-    border-color: __.clr(blue);
+  &[type=submit], &.primary {
+    --btn-color: #{__.clr(pink)};
   }
 
-  &.plain {
-    border-radius: revert;
-    background: none;
-    color: __.clr(pink);
-
-    &::before {
-      display: none;
-    }
+  &[type=reset], &.secondary {
+    --btn-color: #{__.clr(green)};
   }
+
+  &.important {
+    --btn-color: #{__.clr(gold)};
+  }
+
 }
+
 
 .grid.gallery {
   .box {
