@@ -2,18 +2,21 @@
   "name": "ana-wedding-site",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
   "scripts": {
-    "admin-dev": "parcel src/admin/index.html --out-dir=dist/admin --port=1235",
-    "admin-build": "parcel build src/admin/index.html --out-dir=dist/admin",
-    "dev": "parcel src/site/index.html --out-dir=dist/site --port=1234",
-    "build": "parcel build src/site/index.html --out-dir=dist/site"
+    "admin-dev": "parcel src/admin/index.html --out-dist=dist/admin --port=1235",
+    "admin-build": "parcel build src/admin/index.html --dist-dir=dist/admin",
+    "dev": "parcel -p 1234 src/site/index.html --dist-dir=dist/site",
+    "build": "parcel build src/site/index.html --dist-dir=dist/site"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.0.0",
+    "@parcel/config-default": "^2.0.0-rc.0",
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0",
+    "postcss": "^8.3.9",
     "posthtml": "^0.16.5",
     "posthtml-expressions": "^1.9.0",
     "posthtml-include": "^1.7.1",
