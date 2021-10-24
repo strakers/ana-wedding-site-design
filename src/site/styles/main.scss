@@ -109,6 +109,18 @@ nav {
   color: __.clr(green);
 }
 
+.font-default {
+  color: __.clr(blue);
+}
+
+.font-important {
+  color: __.clr(gold);
+}
+
+.font-info {
+  color: __.clr(rose);
+}
+
 .font-accent {
   font-size: 55%;
 }
@@ -470,5 +482,20 @@ button {
   &:nth-child(2n) {
     flex-direction: row-reverse;
     text-align: right;
+  }
+}
+
+
+/* =====================================================================================================================
+  ## TRANSITION STYLES ##
+===================================================================================================================== */
+@media screen {
+  .fade-in {
+    opacity: .1;
+    transition: opacity 450ms ease-in-out;
+
+    &.appear {
+      opacity: 1;
+    }
   }
 }
