@@ -135,12 +135,20 @@ h2, h3 {
   font-size: 1.5em;
 }
 
-h3 {
+h3, h4 {
   font-family: __.fnt('rox'), Arial, serif;
 }
 
 .centered {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .divider {
@@ -197,6 +205,13 @@ h3 {
   }
 }
 
+.container {
+  &.inverse {
+    background-color: __.clr(blue);
+    width: 100%;
+  }
+}
+
 section {
   max-width: 900px;
   margin: 0 auto;
@@ -217,7 +232,11 @@ section {
       text-align: center;
     }
 
-    p {
+    h4 {
+      margin-top: 0;
+    }
+
+    p, .narrow {
       margin: 0 auto 16px;
       max-width: 22em;
     }
@@ -232,7 +251,7 @@ section {
   ## FORM STYLES ##
 ===================================================================================================================== */
 
-label, input, button, textarea {
+label, input, button, textarea, select {
   font-family: __.fnt('lora'), Arial, serif;
 }
 
@@ -299,7 +318,7 @@ fieldset {
 input[type=radio], input[type=checkbox] {
 }
 
-input[type=text], input[type=tel], input[type=email], input[type=url], input[type=date], input[type=password] {
+input[type=text], input[type=tel], input[type=email], input[type=url], input[type=date], input[type=password], select, textarea {
   border: 0 none;
   border-radius: 50% 50% 0 0;
   border-bottom: 1px solid __.clr(rose);
@@ -311,6 +330,14 @@ input[type=text], input[type=tel], input[type=email], input[type=url], input[typ
     box-shadow: 0 0 0 .25em #fff, 0 2px .25em .25em __.clr(rose, 25);
     outline: 0 none;
   }
+}
+
+select:invalid:after {
+  color: __.clr(green);
+}
+
+select[value='0']:after {
+  content: attr(placeholder);
 }
 
 hr {
@@ -434,5 +461,14 @@ button {
 .pg-splash {
   img {
     max-width: 100%;
+  }
+}
+
+.party-member {
+  margin: 5em 0;
+
+  &:nth-child(2n) {
+    flex-direction: row-reverse;
+    text-align: right;
   }
 }
