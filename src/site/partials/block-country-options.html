@@ -1,0 +1,31 @@
+<script locals>
+    module.exports = {
+        countries: [
+            {
+                "name": "Canada",
+                "code": "CAN"
+            },
+            {
+                "name": "United States of America",
+                "code": "USA"
+            },
+            {
+                "name": "UK/Great Britain",
+                "code": "GBK"
+            },
+            {
+                "name": "Trinidad & Tobago",
+                "code": "TNT"
+            },
+            {
+                "name": "Barbados",
+                "code": "BRB"
+            }
+        ]
+            .sort(({name: a},{name: b}) => { return a < b ? -1 : a > b;})
+    }
+</script>
+
+<each loop="country in countries">
+    <option value="{{country.code}}">{{country.name}}</option>
+</each>
