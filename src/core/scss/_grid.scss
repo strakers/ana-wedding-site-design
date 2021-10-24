@@ -19,9 +19,10 @@
   .row {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     gap: 1em;
 
-    & > *, &.three > * {
+    &:not(.skew) > *, &.three > * {
       flex: 1 1 calc(math.div(100%, 3) - 2em);
       min-width: 15ch;
 
@@ -55,6 +56,26 @@
 
     &.maintain-size > * {
       flex-grow: 0;
+    }
+
+    &.skew {
+      &.left, &.right {
+        & > :first-child {
+          flex: 1 1 calc(20% - 2em);
+        }
+        & > :last-child {
+          flex: 1 1 calc(80% - 2em);
+        }
+      }
+
+      &.left {
+        text-align: left;
+      }
+
+      &.right {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
     }
   }
 }
