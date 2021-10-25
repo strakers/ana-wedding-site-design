@@ -538,6 +538,22 @@ button {
   }
 }
 
+a > .logo {
+  display: block;
+
+  & svg, & + .label {
+    color: __.clr(pink);
+    fill: __.clr(pink);
+  }
+}
+
+a:hover > .logo, a:focus > .logo {
+  & svg, & + .label {
+    color: __.clr(blue);
+    fill: __.clr(blue);
+  }
+}
+
 
 /* =====================================================================================================================
   ## TRANSITION STYLES ##
