@@ -16,3 +16,11 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin mqx($key: xs) {
+  $size: map.get($breakpoints, $key);
+
+  @media (max-width: $size) {
+    @content;
+  }
+}
