@@ -46,6 +46,15 @@ a {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
+.padded {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 /* =====================================================================================================================
   ## NAVIGATION STYLES ##
 ===================================================================================================================== */
@@ -147,11 +156,15 @@ h2, h3 {
   font-size: 1.5em;
 }
 
+h2, h4 {
+  font-size: 1.1em;
+}
+
 h3, h4 {
   font-family: __.fnt('rox'), Arial, serif;
 }
 
-.centered {
+.centered, .centered * {
   text-align: center;
 }
 
@@ -424,7 +437,7 @@ button {
   ## VENDOR STYLES ##
 ===================================================================================================================== */
 
-.business-card {
+/*.business-card {
   @extend .box;
 
   padding: 1em;
@@ -468,6 +481,46 @@ button {
     margin-right: .5em;
     transform: translateY(3px);
   }
+}*/
+.business-card {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 2em;
+  text-align: center;
+  border: 1px solid __.clr(rose);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  & .title, & .body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    color: __.clr(pink);
+    margin-bottom: 1em;
+    line-height: 14px;
+  }
+
+  span, div {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+  }
+
+  .lni {
+    color: __.clr(pink);
+    float: left;
+    margin-right: .5em;
+    transform: translateY(3px);
+  }
 }
 
 .pg-splash {
@@ -499,3 +552,7 @@ button {
     }
   }
 }
+
+
+
+
